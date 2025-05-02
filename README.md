@@ -5,9 +5,13 @@
 # - 此版本为原版改版
 # - 使用说明
 1.请直接下载main.py文件。确保电脑上已安装好python。
+
 2.在config.json按照原格式修改值日生表和课表，程序会自动读取。
+
+
 4.第27行代表当前值日生持续几天，28行表示几个循环为一个周期。
 ![image](https://github.com/user-attachments/assets/1a0c7202-3442-462b-99e9-6b918b3519cb)
+
 例如：本程序为当前值日生连续工作7天。每四周（4个7天）为一周期循环。
 5.本程序采取一节课时间为40分钟。因此需要修改时间请到54行的函数中修改。
 ![image](https://github.com/user-attachments/assets/e47b6f3f-8bb2-4fa7-992b-e5e6fbbeedbd)
