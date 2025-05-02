@@ -23,6 +23,7 @@ for group, info in data.items():
     if isinstance(info, dict) and 'names' in info:
         names.append(info['names'])   
 
+
 days_in_week = 7
 weeks_in_cycle = 4
 
@@ -152,7 +153,6 @@ def create_gui():
     btn_m = tk.Button(root, text="点我隐藏5分钟", command=hide_main, font=("宋体", 10))
     btn_m.place(x=w_main-550, y=100)
     btn_m.lift()'''
-
     # 更新文字
     def update():
         now = get_time()
