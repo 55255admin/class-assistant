@@ -10,7 +10,7 @@
 <img width="677" alt="屏幕截图 2025-05-02 124357" src="https://github.com/user-attachments/assets/fefcd79c-94ab-417d-a36d-c9fead3dc64c" />
 
 3.本程序允许鼠标透过窗口操作后方，因此“隐藏5分钟按钮”被替换为快捷键，默认为F12+Delete，如需修改请前往186行
-
+![Image](https://github.com/user-attachments/assets/c430a8c2-67f6-42dc-96f0-6473ee26e4f1)
 
 4.第27行代表当前值日生持续几天，28行表示几个循环为一个周期。
 ![image](https://github.com/user-attachments/assets/1a0c7202-3442-462b-99e9-6b918b3519cb)
@@ -34,6 +34,7 @@
 |6|周天|
 # - 日志
 - [x] 2025.4.30 完成初步程序
+- [x] 2025.5.2  完成此改版
 - [ ] 2025.4.32 增加LGM模型api，实现早晨报早安功能。
 
 
