@@ -7,6 +7,9 @@
 1.请直接下载main.py文件。确保电脑上已安装好python。
 
 2.在config.json按照原格式修改值日生表和课表，程序会自动读取。
+<img width="677" alt="屏幕截图 2025-05-02 124357" src="https://github.com/user-attachments/assets/fefcd79c-94ab-417d-a36d-c9fead3dc64c" />
+
+3.本程序允许鼠标透过窗口操作后方，因此“隐藏5分钟按钮”被替换为快捷键，默认为F12+Delete，如需修改请前往186行
 
 
 4.第27行代表当前值日生持续几天，28行表示几个循环为一个周期。
