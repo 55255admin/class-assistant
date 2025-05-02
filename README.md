@@ -16,9 +16,11 @@
 ![image](https://github.com/user-attachments/assets/1a0c7202-3442-462b-99e9-6b918b3519cb)
 
 例如：本程序为当前值日生连续工作7天。每四周（4个7天）为一周期循环。
+
 5.本程序采取一节课时间为40分钟。因此需要修改时间请到54行的函数中修改。
 ![image](https://github.com/user-attachments/assets/e47b6f3f-8bb2-4fa7-992b-e5e6fbbeedbd)
 例如第63行为300秒，（距离下课5分钟显示窗口并倒计时），67行为2400秒（上课时隐藏窗口，因前一个if先触发，因此倒计时5分钟会直接显示。如要改成对应时间，例：35分钟。即改成35*60），72行的minutes也改成对应时间如35。
+
 6.在第161行修改为下课时间。第一个列表是除周五以外的时间，第二个是周五的时间。如需修改请修改对应“wd == 4”部分。
 ![image](https://github.com/user-attachments/assets/5cb027b8-98fa-4a41-adf5-d83f0a77fbd9)
 165行为对应标语，请酌情修改。
