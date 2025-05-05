@@ -1,7 +1,29 @@
 import tkinter as tk
 import time
 from datetime import datetime,timedelta
+import requests
+import threading
+global saying
+def run_tts(text):
+    import asyncio
+    import edge_tts
+    import playsound
+    import os
 
+    OUTPUT_FILE = os.path.join(os.path.dirname(__file__), 'example.mp3')
+    VOICE = "zh-CN-XiaoxiaoNeural"
+
+    async def amain():
+        communicate = edge_tts.Communicate(text, VOICE)
+        await communicate.save(OUTPUT_FILE)
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    loop.run_until_complete(amain())
+    loop.close()
+
+    playsound.playsound("example.mp3")
+    print(text)
 # 初始化 status 变量
 status = 1
 
@@ -91,6 +113,7 @@ def create_gui():
     sched = tk.Toplevel(root)
     sched.overrideredirect(1)
     sched.attributes("-topmost", 1)
+    sched.attributes("-alpha", 0.8)
     w_s, h_s = 90, 320
     x_s, y_s = 0, (sh - h_s)//2
     sched.geometry(f"{w_s}x{h_s}+{x_s}+{y_s}")
@@ -166,6 +189,87 @@ def create_gui():
         canvas.create_text(w_main/2, 20, text=f"本周值日生：{duty} {extra}", font=("宋体", 10, "bold"), fill="black", anchor="n")
         canvas.create_text(w_main/2, 40, text=f"当前时间：{now}", font=("宋体", 20, "bold"), fill="black", anchor="n")
         canvas.create_text(w_main/2, 70, text=f"{rem} {extra}", font=("宋体", 20, "bold"), fill="red", anchor="n")
+        time_now = get_time().split()[-1]
+        now_now = datetime.strptime(time_now, "%H:%M:%S")
+        t = datetime.strptime("15:31:20", "%H:%M:%S")
+        rem_now = (now_now - t).total_seconds()
+        if rem_now == 0 :
+
+            import requests
+
+            weather_api = "your_api"
+            api_key = "your_key"
+
+            # 使用 f-string 进行字符串格式化
+            weather_url = f"https://{weather_api}/v7/weather/now?location=121.52,31.07&key={api_key}&lang=zh"
+            warning_url = f"https://{weather_api}/v7/warning/now?location=121.52,31.07&key={api_key}&lang=zh"
+
+            response = requests.get(weather_url)
+            data = response.json()
+
+            warning_response = requests.get(warning_url)
+            warning_data = warning_response.json()
+            global weather_text
+            global weather_temp
+            global weather_feelsLike
+            global warning_text
+            global weather_status
+            global warning_status
+
+            if data.get("code") == "200":
+                weather_status = 1
+                weather_data = data["now"]
+                weather_text = weather_data.get('text', '未知')
+                weather_temp = weather_data.get('temp', '未知')
+                weather_feelsLike = weather_data.get('feelsLike', '未知')
+
+
+                print(f"天气：{weather_data.get('text', '未知')}")
+                print(f"温度：{weather_data.get('temp', '未知')}°C")
+                print(f"体感温度：{weather_data.get('feelsLike', '未知')}°C")
+            else:
+                weather_status = 0
+                print(f"获取天气数据失败，错误代码：{data.get('code')}")
+                print(f"错误信息：{data.get('message')}")
+
+            if warning_data.get("code") == "200":
+                warnings = warning_data.get("warning", [])
+                print(warning_data)
+                if warnings:
+                    for warning in warnings:
+                        warning_status = 1
+                        warning_text = warning.get('text', '未知')
+                        print(f"当前有一条预警信息：{warning.get('text', '未知')}")
+                else:
+                    warning_status = 0
+                    print("当前没有预警信息")
+            else:
+                print(f"获取预警数据失败，错误代码：{warning_data.get('code')}")
+                print(f"错误信息：{warning_data.get('message')}")
+            
+            
+    
+            # 替换为你自己的 API 密钥
+            
+            API_KEY = "your_api"
+            jitang_url = f"https://apis.juhe.cn/fapig/soup/query?key={API_KEY}"
+            jitang_response = requests.get(jitang_url)
+            jitang_data = jitang_response.json()
+            answer = jitang_data["result"]["text"]
+            print(answer)
+            
+            if weather_status ==1 and warning_status == 1:
+                saying = f"主人,早上好！，新的一天开始了，今天是{now}，今日天气情况为{weather_text}，温度为{weather_temp}°C,体感温度为{weather_feelsLike}°C，今日有一条预警信息请留意{warning_text}。主人，新的一天到了，送你一句话吧：{answer}"
+            if weather_status ==1 and warning_status == 0:
+
+                saying = f"主人,早上好！，新的一天开始了，今天是{now}，今日天气情况为{weather_text}，温度为{weather_temp}°C,体感温度为{weather_feelsLike}°C。主人，新的一天到了，送你一句话吧：{answer}"
+            if weather_status ==0:
+                saying = f"主人,早上好！，新的一天开始了，今天是{now}，天气情况获取失败。主人，新的一天到了，送你一句话吧：{answer}"  
+            threading.Thread(target=run_tts, args=(saying,)).start()
+
+
+            
+            
         root.after(1000, update)
 
     sync()
