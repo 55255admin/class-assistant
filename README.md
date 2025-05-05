@@ -35,8 +35,10 @@
 注：安装playsound库前需先安装wheel库才能正常安装。
 # - 8.鸣谢：
 1.edge-tts （url：https://github.com/rany2/edge-tts）
+2.Tsaisensei（https://github.com/Tsaisensei）
 # - 日志
 - [x] 2025.4.30 完成初步程序
 - [x] 2025.5.3 增加LGM模型api，实现早晨报早安功能。
 - [X] 2025.5.5 优化代码，接入微软语音TTL，接入天气、预警api、接入每日心灵鸡汤api，优化代码为多线程处理。
+- [ ] 2025.5.10 合并Redesig版本
 
