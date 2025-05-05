@@ -3,7 +3,7 @@
 如果喜欢的话，还请给个Star~
 注：本项目使用AGPL协议，因此如有修改还请开源哦~，建议直接发到 pull requests上。
 # - 使用说明
-1.请直接下载main.py文件。确保电脑上已安装好python。
+1.请直接下载main.py文件。确保电脑上已安装好python。安装好requests库
 2.在第9行修改值日生列表。
 ![image](https://github.com/user-attachments/assets/d661b09b-4708-4c1e-b550-a9a7899d5eae)
 
@@ -28,6 +28,12 @@
 |4|周五|
 |5|周六|
 |6|周天|
+7.早晨报早安功能：
+请前往和风天气申请“城市天气”和“预警”两处api接口（url:https://dev.qweather.com/docs/api/weather/）,替换至程序的200与201行。
+请前往聚合数据的“每日心灵鸡汤语录”获取api（url:https://www.juhe.cn/docs/api/id/669），替换至程序的254行。
+注：安装playsound库前需先安装wheel库才能正常安装。
+8.鸣谢：
+1.edge-tts （url：https://github.com/rany2/edge-tts）
 # - 日志
 - [x] 2025.4.30 完成初步程序
 - [x] 2025.5.3 增加LGM模型api，实现早晨报早安功能。
