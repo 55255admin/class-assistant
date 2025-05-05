@@ -28,6 +28,7 @@
 |4|周五|
 |5|周六|
 |6|周天|
+|--|--|
 7.早晨报早安功能：
 请前往和风天气申请“城市天气”和“预警”两处api接口（url:https://dev.qweather.com/docs/api/weather/）,替换至程序的200与201行。
 请前往聚合数据的“每日心灵鸡汤语录”获取api（url:https://www.juhe.cn/docs/api/id/669），替换至程序的254行。
