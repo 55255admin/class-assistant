@@ -3,7 +3,7 @@
 如果喜欢的话，还请给个Star~
 注：本项目使用AGPL协议，因此如有修改还请开源哦~，建议直接发到 pull requests上。
 # - 使用说明
-## - 1.请直接下载main.py文件。确保电脑上已安装好python。安装好requests库
+## - 1.请直接下载main.py文件。确保电脑上已安装好python。安装好requests、edge_tts、playsound、wheel（见后文）库
 ## - 2.在第9行修改值日生列表。
 ![image](https://github.com/user-attachments/assets/d661b09b-4708-4c1e-b550-a9a7899d5eae)
 
