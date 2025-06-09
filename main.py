@@ -88,10 +88,10 @@ get_duty_name = lambda: names[get_current_week()]
 # 拆分今日课表
 def get_schedule_lines():
     text = weekly_schedule[datetime.now().weekday()]
-    if '：' in text:
-        day, subs = text.split('：',1)
+    if ':' in text:
+        day, subs = text.split(':',1)
         items = subs.split('、')
-        return [f"{day}："] + items
+        return [f"{day}:"] + items
     return [text]
 
 # 获取当前时间
